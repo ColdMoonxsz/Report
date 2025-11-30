@@ -1,0 +1,53 @@
+{
+  "charts": [
+    {
+      "source": "./charts/purchases.dsvg"
+    }
+  ],
+  "animations": [
+    {
+      "id": "axis_fade_out",
+      "selector": ".axis-domain, .axis-tick, .axis-label, .chart-title",
+      "effects": [
+        {
+          "type": "fade",
+          "duration": 500,
+          "target-property": "opacity",
+          "to": 0 
+        }
+      ]
+    },
+    {
+      "id": "line_drawing",
+      "selector": "path.link", 
+      "grouping": { "groupBy": "id" },
+      "reference": "start after previous",
+      "effects": [
+        { "type": "wipe", "duration": 3000 }
+      ]
+    },
+    {
+      "id": "point_label_reveal",
+      "selector": "circle, text.value", 
+      "grouping": {
+        "groupBy": "year", 
+        "reference": "start_with_previous",
+        "delay": 350
+      },
+      "effects": [
+        { 
+            "type": "fade", 
+            "selection": "circle", 
+            "duration": 200, 
+            "target-property": "opacity", 
+            "to": 0 
+        },
+        { 
+            "type": "wipe", 
+            "selection": "text.value", 
+            "duration": 400 
+        } 
+      ]
+    }
+  ]
+}
